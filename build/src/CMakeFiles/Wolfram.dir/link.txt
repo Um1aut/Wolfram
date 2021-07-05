@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/Wolfram.dir/main.cpp.o -o Wolfram  ../includes/glfw/src/libglfw3.a /usr/lib/libvulkan.so -lpthread /usr/lib/librt.so -lm -ldl 
