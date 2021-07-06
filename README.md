@@ -26,7 +26,10 @@ $ make
 $ cd src
 $ ./Wolfram
 ```
+<<<<<<< HEAD
 # Windows
 - [install the 1.2.176.1 version of Vulkan SDK](https://vulkan.lunarg.com/sdk/home). Choose path `C:\VulkanSDK`
 - open cmake gui and choose your cmake generation option(for example, Visual Studio 19)
 - run your application. If you have any issues, see "Issue page" on github, or write it to my [telegram](t.me/Umlaut)
+=======
+>>>>>>> 4f39e3e8d36c6115a2a878a80f937eb11f9a242d
