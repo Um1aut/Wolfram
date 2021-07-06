@@ -1,3 +1,5 @@
 #!/bin/bash
-~/VulkanSDK/1.2.176.1/x86_64/bin/glslc shader.vert -o vert.spv
-~/VulkanSDK/1.2.176.1/x86_64/bin/glslc shader.frag -o frag.spv
+
+dir=`dirname $0`
+glslc $dir/shader.vert -o $dir/vert.spv
+glslc $dir/shader.frag -o $dir/frag.spv

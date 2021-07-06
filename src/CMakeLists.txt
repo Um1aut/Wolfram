@@ -1,5 +1,4 @@
-add_executable(Wolfram main.cpp)
-
+add_executable(Wolfram Wolfram.h init.cpp model_loader.h stb_image.h)
 
 set(source "${CMAKE_SOURCE_DIR}/resources")
 set(destination "${CMAKE_CURRENT_BINARY_DIR}/resources")
