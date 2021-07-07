@@ -27,8 +27,8 @@ $ git clone https://github.com/Groovounet/glm.git
 ```  
 Finally, build and run project with CMake
 ```
-$ mkdir build && cd build
-$ cmake ..
+$ cmake -B build
+$ cd build
 $ make
 $ cd src
 $ ./Wolfram
