@@ -22,8 +22,9 @@ Clone the repository. Because of github's policy you need to clone glfw reposito
 ```
 $ cd includes
 $ rm -rf glfw
+$ rm -rf glm
 $ git clone https://github.com/glfw/glfw
-$ git clone https://github.com/Groovounet/glm.git
+$ git clone https://github.com/g-truc/glm
 ```  
 Finally, build and run project with CMake
 ```
