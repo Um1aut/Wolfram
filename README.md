@@ -1,5 +1,7 @@
 # Simple cross-platform Vulkan API Engine
 The main direction of this project is learning the Vulkan API and learning the basic structure and principles of how game engine works
+## Showcase
+![](https://i.imgur.com/oHz8HmZ.png)
 ## Requirements
 - [Graphics Card's culpability for Vulkan](http://vulkan.gpuinfo.org/)
 - **For GNU/Linux**. Vulkan driver installed
