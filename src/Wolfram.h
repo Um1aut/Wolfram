@@ -139,11 +139,24 @@ struct UniformBufferObject {
 
 GLFWwindow* window;
 
-double xpos, ypos;
-
 class Wolfram {
 	public:
+    double xpos, ypos;
 
+    //Note! Must be controlled by settings in config.
+    double lastMouseX = 0.0;
+    double lastMouseY = 0.0;
+    float rotationSpeed = 0.5f;
+    float rotationAngle = 0.0f;
+
+    float sensivity = 0.5f;
+
+    double deltaX, deltaY;
+
+    glm::vec3 cameraPosition = glm::vec3(2.0f, 1.5f, 2.0f);
+    glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+    glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+    float cameraSpeed = 0.5f;
 
     VkInstance instance;
     VkDebugUtilsMessengerEXT debugMessenger;
@@ -207,7 +220,56 @@ class Wolfram {
 
     bool framebufferResized = false;
 
-	
+    bool altPressed = false;
+
+
+  // Function for updating RotationAngle, which is defined previously in the file.
+  void updateCameraMovement(GLFWwindow* window, float& rotationAngle, float rotationSpeed)
+  { 
+    double mouseX, mouseY;
+
+
+    if (glfwGetKey(window, GLFW_KEY_LEFT_ALT) == GLFW_PRESS)
+    {
+      altPressed = true;
+    }
+    else if (glfwGetKey(window, GLFW_KEY_LEFT_ALT) == GLFW_RELEASE)
+    {
+      altPressed = false;
+    }
+
+
+      if (altPressed) {
+            // Check for keyboard input
+      if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+        cameraPosition += cameraSpeed * cameraFront;
+      if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+        cameraPosition -= cameraSpeed * cameraFront;
+      if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+        cameraPosition += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+      if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+        cameraPosition -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+    }
+
+      if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS)
+      {
+      glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+      glfwGetCursorPos(window, &mouseX, &mouseY);
+
+      deltaX = mouseX - lastMouseX;
+      deltaY = mouseY - lastMouseY;
+
+      rotationAngle += rotationSpeed * static_cast<float>(deltaX);
+
+      lastMouseX = mouseX;
+      lastMouseY = mouseY;
+
+      }  else {
+        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        glfwGetCursorPos(window, &lastMouseX, &lastMouseY);
+      }
+  }
+
 		
     void initWindow() {
         glfwInit();
@@ -229,6 +291,7 @@ class Wolfram {
 
     void mainLoop() {
         while (!glfwWindowShouldClose(window)) {
+            updateCameraMovement(window, rotationAngle, rotationSpeed);
             glfwPollEvents();
             drawFrame();
         }
@@ -1438,21 +1501,39 @@ VkSampleCountFlagBits getMaxUsableSampleCount() {
     }
 
     void updateUniformBuffer(uint32_t currentImage) {
-        static auto startTime = std::chrono::high_resolution_clock::now();
+    static auto startTime = std::chrono::high_resolution_clock::now();
 
-        auto currentTime = std::chrono::high_resolution_clock::now();
-        float deltatime = std::chrono::duration<float, std::chrono::seconds::period>(currentTime - startTime).count();
+    auto currentTime = std::chrono::high_resolution_clock::now();
+    float deltaTime = std::chrono::duration<float, std::chrono::seconds::period>(currentTime - startTime).count();
 
-        UniformBufferObject ubo{};
-        ubo.model = glm::rotate(glm::mat4(1.0f), deltatime * glm::radians(30.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-        ubo.view = glm::lookAt(glm::vec3(2.0f, 1.5f, 2.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-        ubo.proj = glm::perspective(glm::radians(75.0f), swapChainExtent.width / (float) swapChainExtent.height, 0.1f, 10.0f);
-        ubo.proj[1][1] *= -1;
+    // Update camera orientation based on mouse movement
+    deltaX *= sensivity;
+    deltaY *= sensivity;
+    float yaw = glm::radians(rotationSpeed * static_cast<float>(-deltaX));
+    float pitch = glm::radians(rotationSpeed * static_cast<float>(deltaY));
 
-        void* data;
-        vkMapMemory(device, uniformBuffersMemory[currentImage], 0, sizeof(ubo), 0, &data);
-            memcpy(data, &ubo, sizeof(ubo));
-        vkUnmapMemory(device, uniformBuffersMemory[currentImage]);
+    glm::quat yawRotation = glm::angleAxis(yaw, glm::vec3(0.0f, 0.0f, 1.0f));
+    cameraFront = glm::normalize(yawRotation * cameraFront);
+    cameraUp = glm::normalize(yawRotation * cameraUp);
+
+    // Apply pitch rotation around the right (X) axis
+    glm::vec3 cameraRight = glm::normalize(glm::cross(cameraFront, cameraUp));
+    glm::quat pitchRotation = glm::angleAxis(pitch, cameraRight);
+    cameraFront = glm::normalize(pitchRotation * cameraFront);
+    cameraUp = glm::normalize(pitchRotation * cameraUp);
+
+    UniformBufferObject ubo{};
+    ubo.model = glm::rotate(glm::mat4(1.0f), 0.0f, glm::vec3(0.0f, 0.0f, 1.0f));
+    glm::vec3 cameraTarget = cameraPosition + cameraFront;
+    ubo.view = glm::lookAt(cameraPosition, cameraTarget, -cameraUp);
+    // NOT Fixed problem when using mouse camera it also uses it's Roll axis.
+    ubo.proj = glm::perspective(glm::radians(60.0f), swapChainExtent.width / static_cast<float>(swapChainExtent.height), 0.1f, 100.0f);
+    ubo.proj[1][1] *= -1;
+
+    void* data;
+    vkMapMemory(device, uniformBuffersMemory[currentImage], 0, sizeof(ubo), 0, &data);
+    memcpy(data, &ubo, sizeof(ubo));
+    vkUnmapMemory(device, uniformBuffersMemory[currentImage]);
     }
 
     void drawFrame() {
