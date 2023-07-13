@@ -32,6 +32,7 @@ void init() {
 void run_app() {
 	w.initWindow();
 	init();
+    w.initImGui();
 	w.mainLoop();
 	w.cleanup();
 }

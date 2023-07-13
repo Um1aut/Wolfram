@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/Wolfram.dir/init.cpp.o -o Wolfram  -Wl,-rpath,/home/umlaut/VulkanSDK/1.3.250.1/x86_64/lib ../includes/glfw/src/libglfw3.a /home/umlaut/VulkanSDK/1.3.250.1/x86_64/lib/libvulkan.so /usr/lib/librt.a -lm -ldl 
