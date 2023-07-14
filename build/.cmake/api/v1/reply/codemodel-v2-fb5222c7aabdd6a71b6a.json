@@ -1,0 +1,238 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						4,
+						6
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						3,
+						4
+					]
+				},
+				{
+					"build" : "includes/glfw",
+					"childIndexes" : 
+					[
+						2,
+						3
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-includes.glfw-Debug-6bb5c7c8f5beb25ab92e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "includes/glfw",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "includes/glfw/src",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-includes.glfw.src-Debug-d5d2694c59f998dd8f4e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "includes/glfw/src",
+					"targetIndexes" : 
+					[
+						2,
+						6
+					]
+				},
+				{
+					"build" : "includes/glfw/docs",
+					"jsonFile" : "directory-includes.glfw.docs-Debug-f297676ea7c2cdf9d9e7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "includes/glfw/docs",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "includes/glm",
+					"childIndexes" : 
+					[
+						5
+					],
+					"jsonFile" : "directory-includes.glm-Debug-31e3007d833e3096c392.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.2"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "includes/glm"
+				},
+				{
+					"build" : "includes/glm/glm",
+					"jsonFile" : "directory-includes.glm.glm-Debug-b9b8420ec8b7fd96c605.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.2"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 2,
+					"source" : "includes/glm/glm"
+				},
+				{
+					"build" : "src",
+					"jsonFile" : "directory-src-Debug-b6cf2213fc5053b67c22.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						6
+					],
+					"name" : "Wolfram",
+					"targetIndexes" : 
+					[
+						0,
+						3,
+						4
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"name" : "GLFW",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						2,
+						5,
+						6
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						4,
+						5
+					],
+					"name" : "glm",
+					"parentIndex" : 0
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 6,
+					"id" : "Wolfram::@145eef247bfb46b6828c",
+					"jsonFile" : "target-Wolfram-Debug-a88aa47ed117e03afbbf.json",
+					"name" : "Wolfram",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "docs::@776190097dbb1eb320db",
+					"jsonFile" : "target-docs-Debug-daabba2f9b23be788ecc.json",
+					"name" : "docs",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "glfw::@c498c8026e4a66975b95",
+					"jsonFile" : "target-glfw-Debug-6a9d0147252f0c198be3.json",
+					"name" : "glfw",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "imgui::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-imgui-Debug-4b46c42347ea362dde87.json",
+					"name" : "imgui",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "imgui_impl_vulkan::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-imgui_impl_vulkan-Debug-192191c2c5e422213283.json",
+					"name" : "imgui_impl_vulkan",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "uninstall::@40ccbd47d7cfee89a224",
+					"jsonFile" : "target-uninstall-Debug-f692ba822a4880883a71.json",
+					"name" : "uninstall",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "update_mappings::@c498c8026e4a66975b95",
+					"jsonFile" : "target-update_mappings-Debug-f66fe4d3b230bce600d4.json",
+					"name" : "update_mappings",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/umlaut/Projects/test/Wolfram/build",
+		"source" : "/home/umlaut/Projects/test/Wolfram"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 5
+	}
+}
