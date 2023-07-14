@@ -1,8 +1,12 @@
+#include "imgui.h"
+#include "imgui_impl_vulkan.h"
+#include "imgui_impl_glfw.h"
 #include <vulkan/vulkan_core.h>
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
-
 #include "variables/variables.hpp"
+#include "engine/VulkanHelper.hpp"
+using namespace VulkanVariables;
 
 #define GLM_TEST_ENABLE
 #define GLM_FORCE_RADIANS
@@ -15,9 +19,6 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
-#include "imgui.h"
-#include "imgui_impl_vulkan.h"
-#include "imgui_impl_glfw.h"
 
 #define TINYOBJLOADER_IMPLEMENTATION
 #include "model_loader.h"
@@ -75,9 +76,15 @@ void DestroyDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerEXT
     }
 }
 
+namespace std {
+        template<> struct hash<VulkanVariables::Vertex> {
+            size_t operator()(VulkanVariables::Vertex const& vertex) const {
+                return ((hash<glm::vec3>()(vertex.pos) ^ (hash<glm::vec3>()(vertex.color) << 1)) >> 1) ^ (hash<glm::vec2>()(vertex.texCoord) << 1);
+            }
+        };
+};
 class Wolfram {
 	public:
-
     bool framebufferResized = false;
 
     bool altPressed = false;
@@ -113,55 +120,24 @@ class Wolfram {
 
       if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS)
       {
-      glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
-      glfwGetCursorPos(window, &mouseX, &mouseY);
+        ImGui::SetMouseCursor(ImGuiMouseCursor_None);
+        glfwGetCursorPos(window, &mouseX, &mouseY);
 
-      deltaX = mouseX - lastMouseX;
-      deltaY = mouseY - lastMouseY;
+        deltaX = mouseX - lastMouseX;
+        deltaY = mouseY - lastMouseY;
 
-      rotationAngle += rotationSpeed * static_cast<float>(deltaX);
+        rotationAngle += rotationSpeed * static_cast<float>(deltaX);
 
-      lastMouseX = mouseX;
-      lastMouseY = mouseY;
+        lastMouseX = mouseX;
+        lastMouseY = mouseY;
 
       }  else {
-        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        ImGui::SetMouseCursor(ImGuiMouseCursor_Arrow);
         glfwGetCursorPos(window, &lastMouseX, &lastMouseY);
       }
   }
 
-		
-    void initWindow() {
-        glfwInit();
-
-        glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-
-        window = glfwCreateWindow(WIDTH, HEIGHT, "Wolfram Engine", nullptr, nullptr);
-        glfwSetWindowUserPointer(window, this);
-        glfwSetFramebufferSizeCallback(window, framebufferResizeCallback);
-		
-		glfwGetCursorPos(window, &xpos, &ypos);
-    }
-
-    static void framebufferResizeCallback(GLFWwindow* window, int width, int height) {
-        auto app = reinterpret_cast<Wolfram*>(glfwGetWindowUserPointer(window));
-        app->framebufferResized = true;
-    }
-
-    static void check_vk_result(VkResult err)
-    {
-        if (err == 0)
-            return;
-        fprintf(stderr, "[vulkan] Error: VkResult = %d\n", err);
-        if (err < 0)
-            abort();
-    }
-
     void initImGui() {
-        if (renderPass != VK_NULL_HANDLE) {
-            std::cout<<"RenderPass -- Completed"<<std::endl;
-        }
-
         ImGui::CreateContext();
 
         // Build the ImGui fonts
@@ -179,7 +155,7 @@ class Wolfram {
         init_info.Queue = graphicsQueue;
         init_info.DescriptorPool = descriptorPool;
         init_info.MinImageCount = 2;
-        init_info.ImageCount = MAX_FRAMES_IN_FLIGHT;
+        init_info.ImageCount = 2;
         init_info.Subpass = 0;
         init_info.MSAASamples = msaaSamples;
         ImGui_ImplVulkan_Init(&init_info, renderPass);
@@ -192,16 +168,40 @@ class Wolfram {
         vkDeviceWaitIdle(device);
         ImGui_ImplVulkan_DestroyFontUploadObjects();
     }
+		
+    void initWindow() {
+        glfwInit();
 
-    // Reinitialize ImGui fonts
-    void reinitializeImGuiFonts(VkCommandBuffer commandBuffer)
+        glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+
+        window = glfwCreateWindow(WIDTH, HEIGHT, "Wolfram Engine", nullptr, nullptr);
+        glfwSetWindowUserPointer(window, this);
+        glfwSetFramebufferSizeCallback(window, framebufferResizeCallback);
+
+		glfwGetCursorPos(window, &xpos, &ypos);
+    }
+
+    static void framebufferResizeCallback(GLFWwindow* window, int width, int height) {
+        auto app = reinterpret_cast<Wolfram*>(glfwGetWindowUserPointer(window));
+        app->framebufferResized = true;
+    }
+
+    static void check_vk_result(VkResult err)
     {
-        // Update ImGui font size based on the new window size
-        ImGuiIO& io = ImGui::GetIO();
-        io.FontGlobalScale = 2.0f;
+        if (err == 0)
+            return;
+        fprintf(stderr, "[vulkan] Error: VkResult = %d\n", err);
+        if (err < 0)
+            abort();
+    }
+    // Reinitialize ImGui fonts
+    void DefaultWindow()
+    {
+        ImGui::Begin("Settings");
 
-        // Destroy the previous font texture
-        ImGui_ImplVulkan_DestroyFontUploadObjects();
+        ImGui::SliderFloat("Sensivity", &sensivity, 0.0f, 1.0f);
+
+        ImGui::End();
     }
 
     void renderImGui(VkCommandBuffer commandBuffer) {
@@ -210,6 +210,8 @@ class Wolfram {
         ImGui::NewFrame();
 
         ImGui::ShowDemoWindow();
+
+        DefaultWindow();
 
         ImGui::Render();
         ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), commandBuffer);
@@ -328,6 +330,7 @@ class Wolfram {
         createDescriptorPool();
         createDescriptorSets();
         createCommandBuffers();
+
         initImGui();
 
         imagesInFlight.resize(swapChainImages.size(), VK_NULL_HANDLE);
@@ -1298,39 +1301,6 @@ VkSampleCountFlagBits getMaxUsableSampleCount() {
         }
 
         vkBindBufferMemory(device, buffer, bufferMemory, 0);
-    }
-
-    VkCommandBuffer beginSingleTimeCommands() {
-        VkCommandBufferAllocateInfo allocInfo{};
-        allocInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
-        allocInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
-        allocInfo.commandPool = commandPool;
-        allocInfo.commandBufferCount = 1;
-
-        VkCommandBuffer commandBuffer;
-        vkAllocateCommandBuffers(device, &allocInfo, &commandBuffer);
-
-        VkCommandBufferBeginInfo beginInfo{};
-        beginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
-        beginInfo.flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
-
-        vkBeginCommandBuffer(commandBuffer, &beginInfo);
-
-        return commandBuffer;
-    }
-
-    void endSingleTimeCommands(VkCommandBuffer commandBuffer) {
-        vkEndCommandBuffer(commandBuffer);
-
-        VkSubmitInfo submitInfo{};
-        submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
-        submitInfo.commandBufferCount = 1;
-        submitInfo.pCommandBuffers = &commandBuffer;
-
-        vkQueueSubmit(graphicsQueue, 1, &submitInfo, VK_NULL_HANDLE);
-        vkQueueWaitIdle(graphicsQueue);
-
-        vkFreeCommandBuffers(device, commandPool, 1, &commandBuffer);
     }
 
     void copyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size) {

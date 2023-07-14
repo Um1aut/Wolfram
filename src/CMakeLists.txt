@@ -1,4 +1,4 @@
-add_executable(Wolfram Wolfram.h init.cpp model_loader.h stb_image.h variables/variables.hpp variables/entt_registry.cpp)
+add_executable(Wolfram Wolfram.h init.cpp model_loader.h stb_image.h variables/variables.hpp variables/entt_registry.hpp UI/Ui.hpp engine/VulkanHelper.hpp engine/models/model_loader.hpp)
 
 set(source "${CMAKE_SOURCE_DIR}/resources")
 set(destination "${CMAKE_CURRENT_BINARY_DIR}/resources")

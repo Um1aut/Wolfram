@@ -1,4 +1,5 @@
 #include "Wolfram.h"
+#include "UI/Ui.hpp"
 Wolfram w;
 void init() {
         w.createInstance();
@@ -32,7 +33,7 @@ void init() {
 void run_app() {
 	w.initWindow();
 	init();
-    w.initImGui();
+    Gui::initImGui();
 	w.mainLoop();
 	w.cleanup();
 }

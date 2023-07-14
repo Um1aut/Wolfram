@@ -184,11 +184,5 @@
   "command": "/usr/bin/clang++ -I/home/umlaut/Projects/test/Wolfram/includes/entt -I/home/umlaut/Projects/test/Wolfram/includes/imgui -I/home/umlaut/Projects/test/Wolfram/includes/imgui/backends -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glm -isystem /home/umlaut/VulkanSDK/1.3.250.1/x86_64/include -g -std=gnu++17 -o src/CMakeFiles/Wolfram.dir/init.cpp.o -c /home/umlaut/Projects/test/Wolfram/src/init.cpp",
   "file": "/home/umlaut/Projects/test/Wolfram/src/init.cpp",
   "output": "src/CMakeFiles/Wolfram.dir/init.cpp.o"
-},
-{
-  "directory": "/home/umlaut/Projects/test/Wolfram/build",
-  "command": "/usr/bin/clang++ -I/home/umlaut/Projects/test/Wolfram/includes/entt -I/home/umlaut/Projects/test/Wolfram/includes/imgui -I/home/umlaut/Projects/test/Wolfram/includes/imgui/backends -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glm -isystem /home/umlaut/VulkanSDK/1.3.250.1/x86_64/include -g -std=gnu++17 -o src/CMakeFiles/Wolfram.dir/variables/entt_registry.cpp.o -c /home/umlaut/Projects/test/Wolfram/src/variables/entt_registry.cpp",
-  "file": "/home/umlaut/Projects/test/Wolfram/src/variables/entt_registry.cpp",
-  "output": "src/CMakeFiles/Wolfram.dir/variables/entt_registry.cpp.o"
 }
 ]

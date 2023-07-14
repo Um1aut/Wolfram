@@ -832,13 +832,6 @@ build src/CMakeFiles/Wolfram.dir/init.cpp.o: CXX_COMPILER__Wolfram_unscanned_Deb
   OBJECT_DIR = src/CMakeFiles/Wolfram.dir
   OBJECT_FILE_DIR = src/CMakeFiles/Wolfram.dir
 
-build src/CMakeFiles/Wolfram.dir/variables/entt_registry.cpp.o: CXX_COMPILER__Wolfram_unscanned_Debug /home/umlaut/Projects/test/Wolfram/src/variables/entt_registry.cpp || cmake_object_order_depends_target_Wolfram
-  DEP_FILE = src/CMakeFiles/Wolfram.dir/variables/entt_registry.cpp.o.d
-  FLAGS = -g -std=gnu++17
-  INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/entt -I/home/umlaut/Projects/test/Wolfram/includes/imgui -I/home/umlaut/Projects/test/Wolfram/includes/imgui/backends -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glm -isystem /home/umlaut/VulkanSDK/1.3.250.1/x86_64/include
-  OBJECT_DIR = src/CMakeFiles/Wolfram.dir
-  OBJECT_FILE_DIR = src/CMakeFiles/Wolfram.dir/variables
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Wolfram
@@ -847,7 +840,7 @@ build src/CMakeFiles/Wolfram.dir/variables/entt_registry.cpp.o: CXX_COMPILER__Wo
 #############################################
 # Link the executable src/Wolfram
 
-build src/Wolfram: CXX_EXECUTABLE_LINKER__Wolfram_Debug src/CMakeFiles/Wolfram.dir/init.cpp.o src/CMakeFiles/Wolfram.dir/variables/entt_registry.cpp.o | libimgui.a libimgui_impl_vulkan.a /home/umlaut/VulkanSDK/1.3.250.1/x86_64/lib/libvulkan.so includes/glfw/src/libglfw3.a /usr/lib/librt.a /usr/lib/libm.so /home/umlaut/VulkanSDK/1.3.250.1/x86_64/lib/libvulkan.so || includes/glfw/src/libglfw3.a libimgui.a libimgui_impl_vulkan.a
+build src/Wolfram: CXX_EXECUTABLE_LINKER__Wolfram_Debug src/CMakeFiles/Wolfram.dir/init.cpp.o | libimgui.a libimgui_impl_vulkan.a /home/umlaut/VulkanSDK/1.3.250.1/x86_64/lib/libvulkan.so includes/glfw/src/libglfw3.a /usr/lib/librt.a /usr/lib/libm.so /home/umlaut/VulkanSDK/1.3.250.1/x86_64/lib/libvulkan.so || includes/glfw/src/libglfw3.a libimgui.a libimgui_impl_vulkan.a
   FLAGS = -g
   LINK_LIBRARIES = -Wl,-rpath,/home/umlaut/VulkanSDK/1.3.250.1/x86_64/lib  libimgui.a  libimgui_impl_vulkan.a  /home/umlaut/VulkanSDK/1.3.250.1/x86_64/lib/libvulkan.so  includes/glfw/src/libglfw3.a  /usr/lib/librt.a  -lm  -ldl  /home/umlaut/VulkanSDK/1.3.250.1/x86_64/lib/libvulkan.so
   OBJECT_DIR = src/CMakeFiles/Wolfram.dir
