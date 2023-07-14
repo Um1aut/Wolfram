@@ -1,3 +1,4 @@
+#include "glm/fwd.hpp"
 #include "imgui.h"
 #include "imgui_impl_vulkan.h"
 #include "imgui_impl_glfw.h"
@@ -199,8 +200,90 @@ class Wolfram {
     {
         ImGui::Begin("Settings");
 
-        ImGui::SliderFloat("Sensivity", &sensivity, 0.0f, 1.0f);
+        ImGui::InputFloat("Sensivity", &sensivity);
+        ImGui::InputFloat("Distance Render", &distanceRender);
+        ImGui::InputFloat("Camera Speed", &cameraSpeed);
 
+        ImGui::Text("Rotation:");
+        ImGui::SliderFloat("X", &rotationAngles.x, -180.0f, 180.0f);
+        ImGui::SliderFloat("Y", &rotationAngles.y, -180.0f, 180.0f);
+        ImGui::SliderFloat("Z", &rotationAngles.z, -180.0f, 180.0f);
+
+        ImGui::End();
+    }
+
+    void DrawData() {
+        ImGuiIO& io = ImGui::GetIO();
+        ImVec2 windowPos = ImVec2(10, 10);  // Position the text at the top-left corner
+
+        ImGui::SetNextWindowPos(windowPos, ImGuiCond_Always);
+
+        ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar;
+        if (ImGui::Begin("Model Position", nullptr, windowFlags)) {
+            ImGui::Text("Hello!");
+        }
+        ImGui::End();
+    }
+
+    void ModelSettings()
+    {
+        ImGuiIO& io = ImGui::GetIO();
+        ImVec2 windowPos = ImVec2(io.DisplaySize.x - 130, 10);  // Position the window at the top-right corner
+        ImVec2 windowSize = ImVec2(120, 105);  // Set the window size
+
+        ImGui::SetNextWindowPos(windowPos, ImGuiCond_Always);
+        ImGui::SetNextWindowSize(windowSize, ImGuiCond_Always);
+
+        ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse| ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar;
+        if (ImGui::Begin("Model Position", nullptr, windowFlags)) {
+            ImGui::Text("Model:");
+            ImGui::InputFloat("X", &modelPosition.x, 1.0f, 0.0f, "%.1f");
+            ImGui::InputFloat("Y", &modelPosition.y, 1.0f, 0.0f, "%.1f");
+            ImGui::InputFloat("Z", &modelPosition.z, 1.0f, 0.0f, "%.1f");
+        }
+        ImGui::End();
+    }
+
+    void showOverlay() {
+        static int location = 0;
+        ImGuiIO& io = ImGui::GetIO();
+        ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav;
+        if (location >= 0)
+        {
+            const float PAD = 10.0f;
+            const ImGuiViewport* viewport = ImGui::GetMainViewport();
+            ImVec2 work_pos = viewport->WorkPos; // Use work area to avoid menu-bar/task-bar, if any!
+            ImVec2 work_size = viewport->WorkSize;
+            ImVec2 window_pos, window_pos_pivot;
+            window_pos.x = (location & 1) ? (work_pos.x + work_size.x - PAD) : (work_pos.x + PAD);
+            window_pos.y = (location & 2) ? (work_pos.y + work_size.y - PAD) : (work_pos.y + PAD);
+            window_pos_pivot.x = (location & 1) ? 1.0f : 0.0f;
+            window_pos_pivot.y = (location & 2) ? 1.0f : 0.0f;
+            ImGui::SetNextWindowPos(window_pos, ImGuiCond_Always, window_pos_pivot);
+            window_flags |= ImGuiWindowFlags_NoMove;
+        }
+        else if (location == -2)
+        {
+            // Center window
+            ImGui::SetNextWindowPos(ImGui::GetMainViewport()->GetCenter(), ImGuiCond_Always, ImVec2(0.5f, 0.5f));
+            window_flags |= ImGuiWindowFlags_NoMove;
+        }
+        ImGui::SetNextWindowBgAlpha(0.55f); // Transparent background
+        if (ImGui::Begin("Data", nullptr, window_flags))
+        {
+            ImGui::Text("FPS: %.1f", io.Framerate);
+            ImGui::Text("MSAA: x%d", msaaSamples);
+            if (ImGui::BeginPopupContextWindow())
+            {
+                if (ImGui::MenuItem("Custom",       NULL, location == -1)) location = -1;
+                if (ImGui::MenuItem("Center",       NULL, location == -2)) location = -2;
+                if (ImGui::MenuItem("Top-left",     NULL, location == 0)) location = 0;
+                if (ImGui::MenuItem("Top-right",    NULL, location == 1)) location = 1;
+                if (ImGui::MenuItem("Bottom-left",  NULL, location == 2)) location = 2;
+                if (ImGui::MenuItem("Bottom-right", NULL, location == 3)) location = 3;
+                ImGui::EndPopup();
+            }
+        }
         ImGui::End();
     }
 
@@ -209,9 +292,11 @@ class Wolfram {
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        ImGui::ShowDemoWindow();
-
         DefaultWindow();
+        ModelSettings();
+        DrawData();
+        showOverlay();
+
 
         ImGui::Render();
         ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), commandBuffer);
@@ -1445,12 +1530,14 @@ VkSampleCountFlagBits getMaxUsableSampleCount() {
         cameraUp = glm::normalize(pitchRotation * cameraUp);
 
         UniformBufferObject ubo{};
-        ubo.model = glm::rotate(glm::mat4(1.0f), 0.0f, glm::vec3(0.0f, 0.0f, 1.0f));
-        glm::vec3 cameraTarget = cameraPosition + cameraFront;
+        ubo.model = glm::translate(glm::mat4(1.0f), modelPosition);
+        ubo.model = glm::rotate(ubo.model, glm::radians(rotationAngles.x+90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+        ubo.model = glm::rotate(ubo.model, glm::radians(rotationAngles.y), glm::vec3(0.0f, 1.0f, 0.0f));
+        ubo.model = glm::rotate(ubo.model, glm::radians(rotationAngles.z), glm::vec3(0.0f, 0.0f, 1.0f));glm::vec3 cameraTarget = cameraPosition + cameraFront;
         ubo.view = glm::lookAt(cameraPosition, cameraTarget, -cameraUp);
-        // NOT Fixed problem when using mouse camera it also uses it's Roll axis.
-        ubo.proj = glm::perspective(glm::radians(60.0f), swapChainExtent.width / static_cast<float>(swapChainExtent.height), 0.1f, 100.0f);
+        ubo.proj = glm::perspective(glm::radians(60.0f), swapChainExtent.width / static_cast<float>(swapChainExtent.height), 0.1f, distanceRender*10);
         ubo.proj[1][1] *= -1;
+
 
         void* data;
         vkMapMemory(device, uniformBuffersMemory[currentImage], 0, sizeof(ubo), 0, &data);

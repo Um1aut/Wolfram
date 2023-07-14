@@ -231,6 +231,12 @@ namespace VulkanVariables {
 
     bool mousePressed;
 
+    float distanceRender = 500.0f;
+
+    glm::vec3 rotationAngles(0.0f, 0.0f, 0.0f);
+
+    glm::vec3 modelPosition(0.0f, 0.0f, 0.0f);
+
     VkCommandBuffer beginSingleTimeCommands() {
         VkCommandBufferAllocateInfo allocInfo{};
         allocInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
