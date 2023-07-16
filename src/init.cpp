@@ -15,15 +15,16 @@ void init() {
         w.createColorResources();
         w.createDepthResources();
         w.createFramebuffers();
-        w.createTextureImage();
-        w.createTextureImageView();
-        w.createTextureSampler();
+        // w.createTextureImage();
+        // w.createTextureImageView();
+        // w.createTextureSampler();
         w.loadModel();
         w.createVertexBuffer();
         w.createIndexBuffer();
         w.createUniformBuffers();
         w.createDescriptorPool();
         w.createDescriptorSets();
+        w.loadTextures();
         w.createCommandBuffers();
 		w.createSyncObjects();
 }
