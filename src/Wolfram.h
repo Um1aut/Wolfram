@@ -1,13 +1,19 @@
+#include "glm/detail/qualifier.hpp"
+#include "glm/ext/matrix_transform.hpp"
 #include "glm/fwd.hpp"
+#include "glm/trigonometric.hpp"
 #include "imgui.h"
 #include "imgui_impl_vulkan.h"
 #include "imgui_impl_glfw.h"
+#include <string>
 #include <vulkan/vulkan_core.h>
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
 #include "variables/variables.hpp"
 #include "engine/camera/updateMovement.hpp"
-#include "engine/textures/textureImage.hpp"
+#include "engine/models/updateUniform.hpp"
+#include "engine/models/model_loader.hpp"
+#include "engine/swapchain/cleanupswapchain.hpp"
 #include "UI/Ui.hpp"
 using namespace VulkanVariables;
 
@@ -18,10 +24,6 @@ using namespace VulkanVariables;
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/hash.hpp>
-
-
-#define TINYOBJLOADER_IMPLEMENTATION
-#include "model_loader.h"
 
 #include <iostream>
 #include <fstream>
@@ -76,25 +78,50 @@ void DestroyDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerEXT
     }
 }
 
-namespace std {
-        template<> struct hash<VulkanVariables::Vertex> {
-            size_t operator()(VulkanVariables::Vertex const& vertex) const {
-                return ((hash<glm::vec3>()(vertex.pos) ^ (hash<glm::vec3>()(vertex.color) << 1)) >> 1) ^ (hash<glm::vec2>()(vertex.texCoord) << 1);
-            }
-        };
-};
 class Wolfram : VulkanHelper {
 	public:
     bool framebufferResized = false;
 
     bool altPressed = false;
-    TextureImage texture;
-    TextureImage texture1;
 
-    void loadTextures() {
-        texture.Load(TEXTURE_PATH.c_str());
-        texture1.Load("resources/textures/viking_room.jpg");
+    std::vector<std::pair<ModelLoader, TextureImage>> modelLoaders;
+    std::vector<std::pair<std::string, std::string>> models = {
+        {"resources/models/viking_room.obj", "resources/textures/viking_room.png"},
+        {"resources/models/a.obj", "resources/textures/viking_room.jpg"}
+    };
+
+    std::vector<std::pair<ModelLoader, TextureImage>> SkyBoxLoader;
+    std::vector<std::pair<std::string, std::string>> SkyBox = {
+        {"resources/models/skybox.obj", "resources/textures/skybox.png"}
+    };
+
+    
+
+void loadModels() {
+    for (const auto& model : models) {
+        ModelLoader loader;
+        loader.Load(model.first.c_str());
+        
+        TextureImage texture;
+        texture.Load(model.second.c_str());
+
+        std::cout << model.first << std::endl;
+
+        modelLoaders.emplace_back(std::move(loader), std::move(texture));
     }
+}
+
+void loadSkyBox() {
+    for (const auto& model : SkyBox) {
+        ModelLoader loader;
+        loader.Load(model.first.c_str());
+        
+        TextureImage texture;
+        texture.Load(model.second.c_str());
+
+        SkyBoxLoader.emplace_back(std::move(loader), std::move(texture));
+    }
+}
 		
     void initWindow() {
         glfwInit();
@@ -134,39 +161,6 @@ class Wolfram : VulkanHelper {
         vkDeviceWaitIdle(device);
     }
 
-    void cleanupSwapChain() {
-        vkDestroyImageView(device, depthImageView, nullptr);
-        vkDestroyImage(device, depthImage, nullptr);
-        vkFreeMemory(device, depthImageMemory, nullptr);
-
-        vkDestroyImageView(device, colorImageView, nullptr);
-        vkDestroyImage(device, colorImage, nullptr);
-        vkFreeMemory(device, colorImageMemory, nullptr);
-
-        for (auto framebuffer : swapChainFramebuffers) {
-            vkDestroyFramebuffer(device, framebuffer, nullptr);
-        }
-
-        vkFreeCommandBuffers(device, commandPool, static_cast<uint32_t>(commandBuffers.size()), commandBuffers.data());
-
-        vkDestroyPipeline(device, graphicsPipeline, nullptr);
-        vkDestroyPipelineLayout(device, pipelineLayout, nullptr);
-        vkDestroyRenderPass(device, renderPass, nullptr);
-
-        for (auto imageView : swapChainImageViews) {
-            vkDestroyImageView(device, imageView, nullptr);
-        }
-
-        vkDestroySwapchainKHR(device, swapChain, nullptr);
-
-        for (size_t i = 0; i < swapChainImages.size(); i++) {
-            vkDestroyBuffer(device, uniformBuffers[i], nullptr);
-            vkFreeMemory(device, uniformBuffersMemory[i], nullptr);
-        }
-
-        vkDestroyDescriptorPool(device, descriptorPool, nullptr);
-    }
-
     void cleanup() {
         ImGui_ImplVulkan_Shutdown();
         ImGui_ImplGlfw_Shutdown();
@@ -174,15 +168,19 @@ class Wolfram : VulkanHelper {
 
         cleanupSwapChain();
 
-        texture.Destroy();
-        texture1.Destroy();
+        for (auto& Loader : modelLoaders) {
+            Loader.first.Destroy();
+            Loader.first.Destroy();
+        }
+
+        for (auto& Loader : SkyBoxLoader) {
+            Loader.first.Destroy();
+            Loader.first.Destroy();
+        }
+
         vkDestroyDescriptorSetLayout(device, uniformDescriptorSetLayout, nullptr);
 		vkDestroyDescriptorSetLayout(device, textureDescriptorSetLayout, nullptr);
-        vkDestroyBuffer(device, indexBuffer, nullptr);
-        vkFreeMemory(device, indexBufferMemory, nullptr);
-
-        vkDestroyBuffer(device, vertexBuffer, nullptr);
-        vkFreeMemory(device, vertexBufferMemory, nullptr);
+        
 
         for (size_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
             vkDestroySemaphore(device, renderFinishedSemaphores[i], nullptr);
@@ -627,10 +625,17 @@ class Wolfram : VulkanHelper {
 
 		VkDescriptorSetLayout SetLayouts[] = { uniformDescriptorSetLayout, textureDescriptorSetLayout };
 
-		VkPipelineLayoutCreateInfo pipelineLayoutInfo{};
+		VkPushConstantRange psRange;
+		psRange.offset = 0;
+		psRange.size = sizeof(glm::mat4);
+		psRange.stageFlags = VK_SHADER_STAGE_VERTEX_BIT;
+        
+        VkPipelineLayoutCreateInfo pipelineLayoutInfo{};
 		pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
 		pipelineLayoutInfo.setLayoutCount = 2;
 		pipelineLayoutInfo.pSetLayouts = SetLayouts;
+        pipelineLayoutInfo.pushConstantRangeCount = 1;
+        pipelineLayoutInfo.pPushConstantRanges = &psRange;
 
 		if (vkCreatePipelineLayout(device, &pipelineLayoutInfo, nullptr, &pipelineLayout) != VK_SUCCESS) {
 			throw std::runtime_error("failed to create pipeline layout!");
@@ -882,85 +887,6 @@ VkSampleCountFlagBits getMaxUsableSampleCount() {
         endSingleTimeCommands(commandBuffer);
     }
 
-    void loadModel() {
-        tinyobj::attrib_t attrib;
-        std::vector<tinyobj::shape_t> shapes;
-        std::vector<tinyobj::material_t> materials;
-        std::string warn, err;
-
-        if (!tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, MODEL_PATH.c_str())) {
-            throw std::runtime_error(warn + err);
-        }
-
-        std::unordered_map<Vertex, uint32_t> uniqueVertices{};
-
-        for (const auto& shape : shapes) {
-            for (const auto& index : shape.mesh.indices) {
-                Vertex vertex{};
-
-                vertex.pos = {
-                    attrib.vertices[3 * index.vertex_index + 0],
-                    attrib.vertices[3 * index.vertex_index + 1],
-                    attrib.vertices[3 * index.vertex_index + 2]
-                };
-
-                vertex.texCoord = {
-                    attrib.texcoords[2 * index.texcoord_index + 0],
-                    1.0f - attrib.texcoords[2 * index.texcoord_index + 1]
-                };
-
-                vertex.color = {1.0f, 1.0f, 1.0f};
-
-                if (uniqueVertices.count(vertex) == 0) {
-                    uniqueVertices[vertex] = static_cast<uint32_t>(vertices.size());
-                    vertices.push_back(vertex);
-                }
-
-                indices.push_back(uniqueVertices[vertex]);
-            }
-        }
-    }
-
-    void createVertexBuffer() {
-        VkDeviceSize bufferSize = sizeof(vertices[0]) * vertices.size();
-
-        VkBuffer stagingBuffer;
-        VkDeviceMemory stagingBufferMemory;
-        createBuffer(bufferSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, stagingBuffer, stagingBufferMemory);
-
-        void* data;
-        vkMapMemory(device, stagingBufferMemory, 0, bufferSize, 0, &data);
-            memcpy(data, vertices.data(), (size_t) bufferSize);
-        vkUnmapMemory(device, stagingBufferMemory);
-
-        createBuffer(bufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, vertexBuffer, vertexBufferMemory);
-
-        copyBuffer(stagingBuffer, vertexBuffer, bufferSize);
-
-        vkDestroyBuffer(device, stagingBuffer, nullptr);
-        vkFreeMemory(device, stagingBufferMemory, nullptr);
-    }
-
-    void createIndexBuffer() {
-        VkDeviceSize bufferSize = sizeof(indices[0]) * indices.size();
-
-        VkBuffer stagingBuffer;
-        VkDeviceMemory stagingBufferMemory;
-        createBuffer(bufferSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, stagingBuffer, stagingBufferMemory);
-
-        void* data;
-        vkMapMemory(device, stagingBufferMemory, 0, bufferSize, 0, &data);
-            memcpy(data, indices.data(), (size_t) bufferSize);
-        vkUnmapMemory(device, stagingBufferMemory);
-
-        createBuffer(bufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_INDEX_BUFFER_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, indexBuffer, indexBufferMemory);
-
-        copyBuffer(stagingBuffer, indexBuffer, bufferSize);
-
-        vkDestroyBuffer(device, stagingBuffer, nullptr);
-        vkFreeMemory(device, stagingBufferMemory, nullptr);
-    }
-
     void createUniformBuffers() {
         VkDeviceSize bufferSize = sizeof(UniformBufferObject);
 
@@ -977,14 +903,14 @@ VkSampleCountFlagBits getMaxUsableSampleCount() {
         poolSizes[0].type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
         poolSizes[0].descriptorCount = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);
         poolSizes[1].type = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
-        poolSizes[1].descriptorCount = 3;
+        poolSizes[1].descriptorCount = sizeof(modelLoaders);
 
         VkDescriptorPoolCreateInfo poolInfo{};
         poolInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
         poolInfo.flags = VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT;
         poolInfo.poolSizeCount = static_cast<uint32_t>(poolSizes.size());
         poolInfo.pPoolSizes = poolSizes.data();
-        poolInfo.maxSets = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT) + 3;
+        poolInfo.maxSets = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT) + sizeof(modelLoaders);
 
         if (vkCreateDescriptorPool(device, &poolInfo, nullptr, &descriptorPool) != VK_SUCCESS) {
             throw std::runtime_error("failed to create descriptor pool!");
@@ -1078,18 +1004,29 @@ VkSampleCountFlagBits getMaxUsableSampleCount() {
             scissor.extent = swapChainExtent;
             vkCmdSetScissor(commandBuffer, 0, 1, &scissor);
 
-            VkBuffer vertexBuffers[] = {vertexBuffer};
-            VkDeviceSize offsets[] = {0};
-            vkCmdBindVertexBuffers(commandBuffer, 0, 1, vertexBuffers, offsets);
-
-            vkCmdBindIndexBuffer(commandBuffer, indexBuffer, 0, VK_INDEX_TYPE_UINT32);
-
             vkCmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipelineLayout, 0, 1, &descriptorSets[currentFrame], 0, nullptr);
-			vkCmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipelineLayout, 1, 1, &texture.descriptorSet, 0, nullptr);
-
-			
-            vkCmdDrawIndexed(commandBuffer, static_cast<uint32_t>(indices.size()), 1, 0, 0, 0);
             
+            calculateCameraCoords();
+
+            glm::mat4 transform;
+            for (auto& Loader : modelLoaders) {
+                vkCmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipelineLayout, 1, 1, &Loader.second.descriptorSet, 0, nullptr);
+                transform = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
+                vkCmdPushConstants(commandBuffer, pipelineLayout, VK_SHADER_STAGE_VERTEX_BIT, 0, sizeof(glm::mat4), &transform);
+                Loader.first.Render(commandBuffer);
+            }
+
+            for (auto& Loader : SkyBoxLoader) {
+                glm::vec3 cameraTarget = cameraFront;
+                glm::vec3 cameraDirection = glm::normalize(cameraTarget);
+
+                vkCmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipelineLayout, 1, 1, &Loader.second.descriptorSet, 0, nullptr);
+                
+                // transform = glm::translate(glm::mat4(0.0f), glm::vec3(-cameraPosition.x, cameraPosition.y, -cameraPosition.z));
+                
+                vkCmdPushConstants(commandBuffer, pipelineLayout, VK_SHADER_STAGE_VERTEX_BIT, 0, sizeof(glm::mat4), &transform);
+                Loader.first.Render(commandBuffer);
+            }
 
             Gui::renderImGui(commandBuffer);
         vkCmdEndRenderPass(commandBuffer);
@@ -1120,44 +1057,6 @@ VkSampleCountFlagBits getMaxUsableSampleCount() {
                 throw std::runtime_error("failed to create synchronization objects for a frame!");
             }
         }
-    }
-
-    void updateUniformBuffer(uint32_t currentImage) {
-        static auto startTime = std::chrono::high_resolution_clock::now();
-
-        auto currentTime = std::chrono::high_resolution_clock::now();
-        float deltaTime = std::chrono::duration<float, std::chrono::seconds::period>(currentTime - startTime).count();
-
-        // Update camera orientation based on mouse movement
-        deltaX *= sensivity;
-        deltaY *= sensivity;
-        float yaw = glm::radians(rotationSpeed * static_cast<float>(-deltaX));
-        float pitch = glm::radians(rotationSpeed * static_cast<float>(deltaY));
-
-        glm::quat yawRotation = glm::angleAxis(yaw, glm::vec3(0.0f, 0.0f, 1.0f));
-        cameraFront = glm::normalize(yawRotation * cameraFront);
-        cameraUp = glm::normalize(yawRotation * cameraUp);
-
-        // Apply pitch rotation around the right (X) axis
-        glm::vec3 cameraRight = glm::normalize(glm::cross(cameraFront, cameraUp));
-        glm::quat pitchRotation = glm::angleAxis(pitch, cameraRight);
-        cameraFront = glm::normalize(pitchRotation * cameraFront);
-        cameraUp = glm::normalize(pitchRotation * cameraUp);
-
-        UniformBufferObject ubo{};
-        ubo.model = glm::translate(glm::mat4(1.0f), modelPosition);
-        ubo.model = glm::rotate(ubo.model, glm::radians(rotationAngles.x+90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-        ubo.model = glm::rotate(ubo.model, glm::radians(rotationAngles.y), glm::vec3(0.0f, 1.0f, 0.0f));
-        ubo.model = glm::rotate(ubo.model, glm::radians(rotationAngles.z), glm::vec3(0.0f, 0.0f, 1.0f));glm::vec3 cameraTarget = cameraPosition + cameraFront;
-        ubo.view = glm::lookAt(cameraPosition, cameraTarget, -cameraUp);
-        ubo.proj = glm::perspective(glm::radians(60.0f), swapChainExtent.width / static_cast<float>(swapChainExtent.height), 0.1f, distanceRender*10);
-        ubo.proj[1][1] *= -1;
-
-
-        void* data;
-        vkMapMemory(device, uniformBuffersMemory[currentImage], 0, sizeof(ubo), 0, &data);
-        memcpy(data, &ubo, sizeof(ubo));
-        vkUnmapMemory(device, uniformBuffersMemory[currentImage]);
     }
 
     void drawFrame() {
@@ -1215,6 +1114,7 @@ VkSampleCountFlagBits getMaxUsableSampleCount() {
         if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR || framebufferResized) {
             framebufferResized = false;
             recreateSwapChain();
+
         } else if (result != VK_SUCCESS) {
             throw std::runtime_error("failed to present swap chain image!");
         }

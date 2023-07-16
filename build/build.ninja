@@ -55,8 +55,6 @@ build CMakeFiles/imgui.dir/includes/imgui/imgui.cpp.o: CXX_COMPILER__imgui_unsca
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/imgui -I/home/umlaut/Projects/test/Wolfram/includes/entt -I/home/umlaut/VulkanSDK/1.3.250.1/x86_64/include
   OBJECT_DIR = CMakeFiles/imgui.dir
   OBJECT_FILE_DIR = CMakeFiles/imgui.dir/includes/imgui
-  TARGET_COMPILE_PDB = CMakeFiles/imgui.dir/imgui.pdb
-  TARGET_PDB = libimgui.pdb
 
 build CMakeFiles/imgui.dir/includes/imgui/imgui_demo.cpp.o: CXX_COMPILER__imgui_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/imgui/imgui_demo.cpp || cmake_object_order_depends_target_imgui
   DEP_FILE = CMakeFiles/imgui.dir/includes/imgui/imgui_demo.cpp.o.d
@@ -64,8 +62,6 @@ build CMakeFiles/imgui.dir/includes/imgui/imgui_demo.cpp.o: CXX_COMPILER__imgui_
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/imgui -I/home/umlaut/Projects/test/Wolfram/includes/entt -I/home/umlaut/VulkanSDK/1.3.250.1/x86_64/include
   OBJECT_DIR = CMakeFiles/imgui.dir
   OBJECT_FILE_DIR = CMakeFiles/imgui.dir/includes/imgui
-  TARGET_COMPILE_PDB = CMakeFiles/imgui.dir/imgui.pdb
-  TARGET_PDB = libimgui.pdb
 
 build CMakeFiles/imgui.dir/includes/imgui/imgui_draw.cpp.o: CXX_COMPILER__imgui_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/imgui/imgui_draw.cpp || cmake_object_order_depends_target_imgui
   DEP_FILE = CMakeFiles/imgui.dir/includes/imgui/imgui_draw.cpp.o.d
@@ -73,8 +69,6 @@ build CMakeFiles/imgui.dir/includes/imgui/imgui_draw.cpp.o: CXX_COMPILER__imgui_
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/imgui -I/home/umlaut/Projects/test/Wolfram/includes/entt -I/home/umlaut/VulkanSDK/1.3.250.1/x86_64/include
   OBJECT_DIR = CMakeFiles/imgui.dir
   OBJECT_FILE_DIR = CMakeFiles/imgui.dir/includes/imgui
-  TARGET_COMPILE_PDB = CMakeFiles/imgui.dir/imgui.pdb
-  TARGET_PDB = libimgui.pdb
 
 build CMakeFiles/imgui.dir/includes/imgui/imgui_widgets.cpp.o: CXX_COMPILER__imgui_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/imgui/imgui_widgets.cpp || cmake_object_order_depends_target_imgui
   DEP_FILE = CMakeFiles/imgui.dir/includes/imgui/imgui_widgets.cpp.o.d
@@ -82,8 +76,6 @@ build CMakeFiles/imgui.dir/includes/imgui/imgui_widgets.cpp.o: CXX_COMPILER__img
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/imgui -I/home/umlaut/Projects/test/Wolfram/includes/entt -I/home/umlaut/VulkanSDK/1.3.250.1/x86_64/include
   OBJECT_DIR = CMakeFiles/imgui.dir
   OBJECT_FILE_DIR = CMakeFiles/imgui.dir/includes/imgui
-  TARGET_COMPILE_PDB = CMakeFiles/imgui.dir/imgui.pdb
-  TARGET_PDB = libimgui.pdb
 
 build CMakeFiles/imgui.dir/includes/imgui/imgui_tables.cpp.o: CXX_COMPILER__imgui_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/imgui/imgui_tables.cpp || cmake_object_order_depends_target_imgui
   DEP_FILE = CMakeFiles/imgui.dir/includes/imgui/imgui_tables.cpp.o.d
@@ -91,8 +83,6 @@ build CMakeFiles/imgui.dir/includes/imgui/imgui_tables.cpp.o: CXX_COMPILER__imgu
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/imgui -I/home/umlaut/Projects/test/Wolfram/includes/entt -I/home/umlaut/VulkanSDK/1.3.250.1/x86_64/include
   OBJECT_DIR = CMakeFiles/imgui.dir
   OBJECT_FILE_DIR = CMakeFiles/imgui.dir/includes/imgui
-  TARGET_COMPILE_PDB = CMakeFiles/imgui.dir/imgui.pdb
-  TARGET_PDB = libimgui.pdb
 
 
 # =============================================================================
@@ -107,9 +97,8 @@ build libimgui.a: CXX_STATIC_LIBRARY_LINKER__imgui_Debug CMakeFiles/imgui.dir/in
   OBJECT_DIR = CMakeFiles/imgui.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/imgui.dir/imgui.pdb
   TARGET_FILE = libimgui.a
-  TARGET_PDB = libimgui.pdb
+  TARGET_PDB = imgui.a.dbg
 
 # =============================================================================
 # Object build statements for STATIC_LIBRARY target imgui_impl_vulkan
@@ -126,8 +115,6 @@ build CMakeFiles/imgui_impl_vulkan.dir/includes/imgui/backends/imgui_impl_vulkan
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/imgui -I/home/umlaut/Projects/test/Wolfram/includes/entt -I/home/umlaut/VulkanSDK/1.3.250.1/x86_64/include -I/home/umlaut/Projects/test/Wolfram/includes/imgui/backends -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include
   OBJECT_DIR = CMakeFiles/imgui_impl_vulkan.dir
   OBJECT_FILE_DIR = CMakeFiles/imgui_impl_vulkan.dir/includes/imgui/backends
-  TARGET_COMPILE_PDB = CMakeFiles/imgui_impl_vulkan.dir/imgui_impl_vulkan.pdb
-  TARGET_PDB = libimgui_impl_vulkan.pdb
 
 build CMakeFiles/imgui_impl_vulkan.dir/includes/imgui/backends/imgui_impl_glfw.cpp.o: CXX_COMPILER__imgui_impl_vulkan_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/imgui/backends/imgui_impl_glfw.cpp || cmake_object_order_depends_target_imgui_impl_vulkan
   DEP_FILE = CMakeFiles/imgui_impl_vulkan.dir/includes/imgui/backends/imgui_impl_glfw.cpp.o.d
@@ -135,8 +122,6 @@ build CMakeFiles/imgui_impl_vulkan.dir/includes/imgui/backends/imgui_impl_glfw.c
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/imgui -I/home/umlaut/Projects/test/Wolfram/includes/entt -I/home/umlaut/VulkanSDK/1.3.250.1/x86_64/include -I/home/umlaut/Projects/test/Wolfram/includes/imgui/backends -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include
   OBJECT_DIR = CMakeFiles/imgui_impl_vulkan.dir
   OBJECT_FILE_DIR = CMakeFiles/imgui_impl_vulkan.dir/includes/imgui/backends
-  TARGET_COMPILE_PDB = CMakeFiles/imgui_impl_vulkan.dir/imgui_impl_vulkan.pdb
-  TARGET_PDB = libimgui_impl_vulkan.pdb
 
 
 # =============================================================================
@@ -151,9 +136,8 @@ build libimgui_impl_vulkan.a: CXX_STATIC_LIBRARY_LINKER__imgui_impl_vulkan_Debug
   OBJECT_DIR = CMakeFiles/imgui_impl_vulkan.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/imgui_impl_vulkan.dir/imgui_impl_vulkan.pdb
   TARGET_FILE = libimgui_impl_vulkan.a
-  TARGET_PDB = libimgui_impl_vulkan.pdb
+  TARGET_PDB = imgui_impl_vulkan.a.dbg
 
 
 #############################################
@@ -326,8 +310,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/context.c.o: C_COMPILER__glfw_unscan
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/init.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/init.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -336,8 +318,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/init.c.o: C_COMPILER__glfw_unscanned
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/input.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/input.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -346,8 +326,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/input.c.o: C_COMPILER__glfw_unscanne
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/monitor.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/monitor.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -356,8 +334,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/monitor.c.o: C_COMPILER__glfw_unscan
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/platform.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/platform.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -366,8 +342,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/platform.c.o: C_COMPILER__glfw_unsca
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/vulkan.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -376,8 +350,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o: C_COMPILER__glfw_unscann
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/window.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/window.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -386,8 +358,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/window.c.o: C_COMPILER__glfw_unscann
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/egl_context.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -396,8 +366,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o: C_COMPILER__glfw_un
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/osmesa_context.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -406,8 +374,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o: C_COMPILER__glfw
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/null_init.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/null_init.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -416,8 +382,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/null_init.c.o: C_COMPILER__glfw_unsc
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/null_monitor.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -426,8 +390,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.o: C_COMPILER__glfw_u
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/null_window.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/null_window.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -436,8 +398,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/null_window.c.o: C_COMPILER__glfw_un
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/null_joystick.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -446,8 +406,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.o: C_COMPILER__glfw_
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/posix_module.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/posix_module.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -456,8 +414,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/posix_module.c.o: C_COMPILER__glfw_u
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/posix_time.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/posix_time.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -466,8 +422,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/posix_time.c.o: C_COMPILER__glfw_uns
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/posix_thread.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -476,8 +430,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o: C_COMPILER__glfw_u
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/x11_init.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/x11_init.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -486,8 +438,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/x11_init.c.o: C_COMPILER__glfw_unsca
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/x11_monitor.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/x11_monitor.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -496,8 +446,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/x11_monitor.c.o: C_COMPILER__glfw_un
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/x11_window.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/x11_window.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -506,8 +454,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/x11_window.c.o: C_COMPILER__glfw_uns
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/xkb_unicode.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/xkb_unicode.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -516,8 +462,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/xkb_unicode.c.o: C_COMPILER__glfw_un
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/glx_context.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/glx_context.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -526,8 +470,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/glx_context.c.o: C_COMPILER__glfw_un
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/linux_joystick.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/linux_joystick.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -536,8 +478,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/linux_joystick.c.o: C_COMPILER__glfw
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 build includes/glfw/src/CMakeFiles/glfw.dir/posix_poll.c.o: C_COMPILER__glfw_unscanned_Debug /home/umlaut/Projects/test/Wolfram/includes/glfw/src/posix_poll.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
@@ -546,8 +486,6 @@ build includes/glfw/src/CMakeFiles/glfw.dir/posix_poll.c.o: C_COMPILER__glfw_uns
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glfw/src -I/home/umlaut/Projects/test/Wolfram/build/includes/glfw/src
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   OBJECT_FILE_DIR = includes/glfw/src/CMakeFiles/glfw.dir
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
 
 
 # =============================================================================
@@ -562,9 +500,8 @@ build includes/glfw/src/libglfw3.a: C_STATIC_LIBRARY_LINKER__glfw_Debug includes
   OBJECT_DIR = includes/glfw/src/CMakeFiles/glfw.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = includes/glfw/src/CMakeFiles/glfw.dir/glfw.pdb
   TARGET_FILE = includes/glfw/src/libglfw3.a
-  TARGET_PDB = includes/glfw/src/libglfw3.pdb
+  TARGET_PDB = glfw3.a.dbg
 
 
 #############################################
@@ -894,8 +831,6 @@ build src/CMakeFiles/Wolfram.dir/init.cpp.o: CXX_COMPILER__Wolfram_unscanned_Deb
   INCLUDES = -I/home/umlaut/Projects/test/Wolfram/includes/entt -I/home/umlaut/Projects/test/Wolfram/includes/imgui -I/home/umlaut/Projects/test/Wolfram/includes/imgui/backends -I/home/umlaut/Projects/test/Wolfram/includes/glfw/include -I/home/umlaut/Projects/test/Wolfram/includes/glm -isystem /home/umlaut/VulkanSDK/1.3.250.1/x86_64/include
   OBJECT_DIR = src/CMakeFiles/Wolfram.dir
   OBJECT_FILE_DIR = src/CMakeFiles/Wolfram.dir
-  TARGET_COMPILE_PDB = src/CMakeFiles/Wolfram.dir/
-  TARGET_PDB = src/Wolfram.pdb
 
 
 # =============================================================================
@@ -911,9 +846,8 @@ build src/Wolfram: CXX_EXECUTABLE_LINKER__Wolfram_Debug src/CMakeFiles/Wolfram.d
   OBJECT_DIR = src/CMakeFiles/Wolfram.dir
   POST_BUILD = cd /home/umlaut/Projects/test/Wolfram/build/src && /usr/bin/cmake -E create_symlink /home/umlaut/Projects/test/Wolfram/resources /home/umlaut/Projects/test/Wolfram/build/src/resources
   PRE_LINK = cd /home/umlaut/Projects/test/Wolfram/build/src && /bin/sh /home/umlaut/Projects/test/Wolfram/resources/shaders/compile.sh && cd /home/umlaut/Projects/test/Wolfram/build
-  TARGET_COMPILE_PDB = src/CMakeFiles/Wolfram.dir/
   TARGET_FILE = src/Wolfram
-  TARGET_PDB = src/Wolfram.pdb
+  TARGET_PDB = Wolfram.dbg
 
 
 #############################################
@@ -1059,14 +993,14 @@ build src/all: phony src/Wolfram
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /home/umlaut/Projects/test/Wolfram/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/includes/glfw/CMake/cmake_uninstall.cmake.in /home/umlaut/Projects/test/Wolfram/includes/glfw/CMake/glfw3.pc.in /home/umlaut/Projects/test/Wolfram/includes/glfw/CMake/glfw3Config.cmake.in /home/umlaut/Projects/test/Wolfram/includes/glfw/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/includes/glfw/docs/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/includes/glfw/docs/Doxyfile.in /home/umlaut/Projects/test/Wolfram/includes/glfw/src/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/includes/glm/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/includes/glm/glm/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/src/CMakeLists.txt /usr/share/cmake/Modules/BasicConfigVersion-SameMajorVersion.cmake.in /usr/share/cmake/Modules/CMakeCCompiler.cmake.in /usr/share/cmake/Modules/CMakeCCompilerABI.c /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXCompiler.cmake.in /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeCompilerIdDetection.cmake /usr/share/cmake/Modules/CMakeDependentOption.cmake /usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake /usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake /usr/share/cmake/Modules/CMakeDetermineCompileFeatures.cmake /usr/share/cmake/Modules/CMakeDetermineCompiler.cmake /usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake /usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake /usr/share/cmake/Modules/CMakeDetermineSystem.cmake /usr/share/cmake/Modules/CMakeFindBinUtils.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeNinjaFindMake.cmake /usr/share/cmake/Modules/CMakePackageConfigHelpers.cmake /usr/share/cmake/Modules/CMakeParseImplicitIncludeInfo.cmake /usr/share/cmake/Modules/CMakeParseImplicitLinkInfo.cmake /usr/share/cmake/Modules/CMakeParseLibraryArchitecture.cmake /usr/share/cmake/Modules/CMakeSystem.cmake.in /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/CMakeTestCCompiler.cmake /usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake /usr/share/cmake/Modules/CMakeTestCompilerCommon.cmake /usr/share/cmake/Modules/CheckCSourceCompiles.cmake /usr/share/cmake/Modules/CheckFunctionExists.cmake /usr/share/cmake/Modules/CheckIncludeFile.cmake /usr/share/cmake/Modules/CheckLibraryExists.cmake /usr/share/cmake/Modules/Compiler/ADSP-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/ARMCC-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/ARMClang-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/AppleClang-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Borland-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/Clang-C.cmake /usr/share/cmake/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake/Modules/Compiler/Clang-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /usr/share/cmake/Modules/Compiler/Clang-FindBinUtils.cmake /usr/share/cmake/Modules/Compiler/Clang.cmake /usr/share/cmake/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Cray-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/GHS-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/GNU-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/Compiler/HP-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/IAR-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /usr/share/cmake/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /usr/share/cmake/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Intel-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/LCC-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/MSVC-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/NVHPC-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/PGI-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/PathScale-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/SCO-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/TI-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Tasking-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Watcom-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/XL-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/zOS-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/FindDoxygen.cmake /usr/share/cmake/Modules/FindFontconfig.cmake /usr/share/cmake/Modules/FindFreetype.cmake /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake/Modules/FindPackageMessage.cmake /usr/share/cmake/Modules/FindPkgConfig.cmake /usr/share/cmake/Modules/FindThreads.cmake /usr/share/cmake/Modules/FindVulkan.cmake /usr/share/cmake/Modules/FindX11.cmake /usr/share/cmake/Modules/GNUInstallDirs.cmake /usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake /usr/share/cmake/Modules/Internal/FeatureTesting.cmake /usr/share/cmake/Modules/Platform/Linux-Clang-C.cmake /usr/share/cmake/Modules/Platform/Linux-Clang-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-Determine-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake /usr/share/cmake/Modules/SelectLibraryConfigurations.cmake /usr/share/cmake/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /home/umlaut/Projects/test/Wolfram/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/includes/glfw/CMake/cmake_uninstall.cmake.in /home/umlaut/Projects/test/Wolfram/includes/glfw/CMake/glfw3.pc.in /home/umlaut/Projects/test/Wolfram/includes/glfw/CMake/glfw3Config.cmake.in /home/umlaut/Projects/test/Wolfram/includes/glfw/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/includes/glfw/docs/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/includes/glfw/docs/Doxyfile.in /home/umlaut/Projects/test/Wolfram/includes/glfw/src/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/includes/glm/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/includes/glm/glm/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/src/CMakeLists.txt /usr/share/cmake/Modules/BasicConfigVersion-SameMajorVersion.cmake.in /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeDependentOption.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakePackageConfigHelpers.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/CheckCSourceCompiles.cmake /usr/share/cmake/Modules/CheckFunctionExists.cmake /usr/share/cmake/Modules/CheckIncludeFile.cmake /usr/share/cmake/Modules/CheckLibraryExists.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/Clang-C.cmake /usr/share/cmake/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake/Modules/Compiler/Clang.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/FindDoxygen.cmake /usr/share/cmake/Modules/FindFontconfig.cmake /usr/share/cmake/Modules/FindFreetype.cmake /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake/Modules/FindPackageMessage.cmake /usr/share/cmake/Modules/FindPkgConfig.cmake /usr/share/cmake/Modules/FindThreads.cmake /usr/share/cmake/Modules/FindVulkan.cmake /usr/share/cmake/Modules/FindX11.cmake /usr/share/cmake/Modules/GNUInstallDirs.cmake /usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake /usr/share/cmake/Modules/Platform/Linux-Clang-C.cmake /usr/share/cmake/Modules/Platform/Linux-Clang-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake /usr/share/cmake/Modules/SelectLibraryConfigurations.cmake /usr/share/cmake/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/umlaut/Projects/test/Wolfram/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/includes/glfw/CMake/cmake_uninstall.cmake.in /home/umlaut/Projects/test/Wolfram/includes/glfw/CMake/glfw3.pc.in /home/umlaut/Projects/test/Wolfram/includes/glfw/CMake/glfw3Config.cmake.in /home/umlaut/Projects/test/Wolfram/includes/glfw/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/includes/glfw/docs/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/includes/glfw/docs/Doxyfile.in /home/umlaut/Projects/test/Wolfram/includes/glfw/src/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/includes/glm/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/includes/glm/glm/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/src/CMakeLists.txt /usr/share/cmake/Modules/BasicConfigVersion-SameMajorVersion.cmake.in /usr/share/cmake/Modules/CMakeCCompiler.cmake.in /usr/share/cmake/Modules/CMakeCCompilerABI.c /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXCompiler.cmake.in /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeCompilerIdDetection.cmake /usr/share/cmake/Modules/CMakeDependentOption.cmake /usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake /usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake /usr/share/cmake/Modules/CMakeDetermineCompileFeatures.cmake /usr/share/cmake/Modules/CMakeDetermineCompiler.cmake /usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake /usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake /usr/share/cmake/Modules/CMakeDetermineSystem.cmake /usr/share/cmake/Modules/CMakeFindBinUtils.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeNinjaFindMake.cmake /usr/share/cmake/Modules/CMakePackageConfigHelpers.cmake /usr/share/cmake/Modules/CMakeParseImplicitIncludeInfo.cmake /usr/share/cmake/Modules/CMakeParseImplicitLinkInfo.cmake /usr/share/cmake/Modules/CMakeParseLibraryArchitecture.cmake /usr/share/cmake/Modules/CMakeSystem.cmake.in /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/CMakeTestCCompiler.cmake /usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake /usr/share/cmake/Modules/CMakeTestCompilerCommon.cmake /usr/share/cmake/Modules/CheckCSourceCompiles.cmake /usr/share/cmake/Modules/CheckFunctionExists.cmake /usr/share/cmake/Modules/CheckIncludeFile.cmake /usr/share/cmake/Modules/CheckLibraryExists.cmake /usr/share/cmake/Modules/Compiler/ADSP-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/ARMCC-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/ARMClang-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/AppleClang-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Borland-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/Clang-C.cmake /usr/share/cmake/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake/Modules/Compiler/Clang-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /usr/share/cmake/Modules/Compiler/Clang-FindBinUtils.cmake /usr/share/cmake/Modules/Compiler/Clang.cmake /usr/share/cmake/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Cray-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/GHS-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/GNU-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/Compiler/HP-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/IAR-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /usr/share/cmake/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /usr/share/cmake/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Intel-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/LCC-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/MSVC-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/NVHPC-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/PGI-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/PathScale-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/SCO-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/TI-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Tasking-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Watcom-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/XL-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/zOS-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/FindDoxygen.cmake /usr/share/cmake/Modules/FindFontconfig.cmake /usr/share/cmake/Modules/FindFreetype.cmake /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake/Modules/FindPackageMessage.cmake /usr/share/cmake/Modules/FindPkgConfig.cmake /usr/share/cmake/Modules/FindThreads.cmake /usr/share/cmake/Modules/FindVulkan.cmake /usr/share/cmake/Modules/FindX11.cmake /usr/share/cmake/Modules/GNUInstallDirs.cmake /usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake /usr/share/cmake/Modules/Internal/FeatureTesting.cmake /usr/share/cmake/Modules/Platform/Linux-Clang-C.cmake /usr/share/cmake/Modules/Platform/Linux-Clang-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-Determine-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake /usr/share/cmake/Modules/SelectLibraryConfigurations.cmake /usr/share/cmake/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake: phony
+build /home/umlaut/Projects/test/Wolfram/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/includes/glfw/CMake/cmake_uninstall.cmake.in /home/umlaut/Projects/test/Wolfram/includes/glfw/CMake/glfw3.pc.in /home/umlaut/Projects/test/Wolfram/includes/glfw/CMake/glfw3Config.cmake.in /home/umlaut/Projects/test/Wolfram/includes/glfw/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/includes/glfw/docs/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/includes/glfw/docs/Doxyfile.in /home/umlaut/Projects/test/Wolfram/includes/glfw/src/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/includes/glm/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/includes/glm/glm/CMakeLists.txt /home/umlaut/Projects/test/Wolfram/src/CMakeLists.txt /usr/share/cmake/Modules/BasicConfigVersion-SameMajorVersion.cmake.in /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeDependentOption.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakePackageConfigHelpers.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/CheckCSourceCompiles.cmake /usr/share/cmake/Modules/CheckFunctionExists.cmake /usr/share/cmake/Modules/CheckIncludeFile.cmake /usr/share/cmake/Modules/CheckLibraryExists.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/Clang-C.cmake /usr/share/cmake/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake/Modules/Compiler/Clang.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/FindDoxygen.cmake /usr/share/cmake/Modules/FindFontconfig.cmake /usr/share/cmake/Modules/FindFreetype.cmake /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake/Modules/FindPackageMessage.cmake /usr/share/cmake/Modules/FindPkgConfig.cmake /usr/share/cmake/Modules/FindThreads.cmake /usr/share/cmake/Modules/FindVulkan.cmake /usr/share/cmake/Modules/FindX11.cmake /usr/share/cmake/Modules/GNUInstallDirs.cmake /usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake /usr/share/cmake/Modules/Platform/Linux-Clang-C.cmake /usr/share/cmake/Modules/Platform/Linux-Clang-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake /usr/share/cmake/Modules/SelectLibraryConfigurations.cmake /usr/share/cmake/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake: phony
 
 
 #############################################

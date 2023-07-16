@@ -92,10 +92,12 @@ namespace VulkanVariables {
 
     bool altPressed = false;
 
-    glm::vec3 cameraPosition = glm::vec3(2.0f, 1.5f, 2.0f);
+    glm::vec3 cameraPosition = glm::vec3(0.0f, 5.5f, 2.0f);
     glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
     glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
-    float cameraSpeed = 0.5f;
+    glm::vec3 cameraCoords;
+    float cameraSpeed = 50.0f;
+
 
     VkInstance instance;
     VkDebugUtilsMessengerEXT debugMessenger;
@@ -131,12 +133,12 @@ namespace VulkanVariables {
     VkDeviceMemory depthImageMemory;
     VkImageView depthImageView;
 
-    std::vector<VulkanVariables::Vertex> vertices;
-    std::vector<uint32_t> indices;
-    VkBuffer vertexBuffer;
-    VkDeviceMemory vertexBufferMemory;
-    VkBuffer indexBuffer;
-    VkDeviceMemory indexBufferMemory;
+    // std::vector<VulkanVariables::Vertex> vertices;
+    // std::vector<uint32_t> indices;
+    // VkBuffer vertexBuffer;
+    // VkDeviceMemory vertexBufferMemory;
+    // VkBuffer indexBuffer;
+    // VkDeviceMemory indexBufferMemory;
 
     std::vector<VkBuffer> uniformBuffers;
     std::vector<VkDeviceMemory> uniformBuffersMemory;
@@ -154,7 +156,7 @@ namespace VulkanVariables {
 
     bool mousePressed;
 
-    float distanceRender = 500.0f;
+    float distanceRender = 400000.0f;
 
     glm::vec3 rotationAngles(0.0f, 0.0f, 0.0f);
 

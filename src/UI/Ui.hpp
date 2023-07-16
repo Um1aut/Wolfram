@@ -47,6 +47,11 @@ namespace Gui {
         ImGui::InputFloat("Distance Render", &distanceRender);
         ImGui::InputFloat("Camera Speed", &cameraSpeed);
 
+        ImGui::Text("Camera coords:");
+        ImGui::InputFloat("Camera Speed X", &cameraPosition.x);
+        ImGui::InputFloat("Camera Speed Y", &cameraPosition.y);
+        ImGui::InputFloat("Camera Speed Z", &cameraPosition.z);
+
         ImGui::Text("Rotation:");
         ImGui::SliderFloat("X", &rotationAngles.x, -180.0f, 180.0f);
         ImGui::SliderFloat("Y", &rotationAngles.y, -180.0f, 180.0f);
