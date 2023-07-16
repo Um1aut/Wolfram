@@ -149,6 +149,7 @@ namespace VulkanVariables {
         alignas(16) glm::mat4 view;
         alignas(16) glm::mat4 proj;
     };
+};
 
     GLFWwindow* window;
 
@@ -163,6 +164,8 @@ namespace VulkanVariables {
     float sensivity = 0.3f;
 
     double deltaX, deltaY;
+
+    bool altPressed = false;
 
     glm::vec3 cameraPosition = glm::vec3(2.0f, 1.5f, 2.0f);
     glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
@@ -208,7 +211,7 @@ namespace VulkanVariables {
     VkImageView textureImageView;
     VkSampler textureSampler;
 
-    std::vector<Vertex> vertices;
+    std::vector<VulkanVariables::Vertex> vertices;
     std::vector<uint32_t> indices;
     VkBuffer vertexBuffer;
     VkDeviceMemory vertexBufferMemory;
@@ -269,4 +272,3 @@ namespace VulkanVariables {
 
         vkFreeCommandBuffers(device, commandPool, 1, &commandBuffer);
     }
-};
